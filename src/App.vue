@@ -3,7 +3,7 @@
     <Header />
 
     <main role="main" class="flex-shrink-0">
-
+      <router-view />
     </main>
 
     <Footer />
