@@ -10,19 +10,25 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import store from './../store'
 
 export default {
   computed: {
-    movies() {
-      return store.state.movies
-    }
+    //movies() {
+      //return store.getters.filteredMovies
+    //}
+    ...mapGetters({
+      movies: 'filteredMovies'
+    })
+    //...mapGetters(['filteredMovies'])
   },
   beforeRouteEnter(to, from, next) {
     store.dispatch('fetchMovies').then(()=>{
       next()
     })
   }
+  //kad god imamo beforeRouteEnter importujemo direktno store 
 }
 </script>
 

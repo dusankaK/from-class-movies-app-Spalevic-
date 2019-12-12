@@ -6,6 +6,8 @@
 </template>
 
 <script>
+//komponente u views su page komponente zato sto, pogledaj router- pravi se razlika de se moze koristi before route neter
+
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 
@@ -16,3 +18,4 @@ export default {
   }
 }
 </script>
+

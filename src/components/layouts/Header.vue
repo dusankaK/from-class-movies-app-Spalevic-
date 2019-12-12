@@ -14,14 +14,15 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
+        <MoviesSearch />          
+        <li class="nav-item" v-if="isUserAuthenticated">
+            <button class="btn btn-outline-danger my-2 my-sm-0" @click="onLogout">Logout</button>
+          </li>
         <!--<li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>-->
       </ul>
-      <!--<form class="form-inline mt-2 mt-md-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>-->
+      
     </div>
   </nav>
 </header>
@@ -30,7 +31,29 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+import MoviesSearch from './../MoviesSearch'
+
 export default {
+  components: {
+    MoviesSearch
+  },
+  computed: {
+    ...mapGetters({
+      isUserAuthenticated: 'isUserAuthenticated'
+    })
+  },
+  methods: {
+    ...mapActions({
+      logout: 'logout'
+    }),
+    onLogout() {
+      this.logout()
+      this.$router.push({
+        name: 'login'
+      })
+    }
+  }
 
 }
 </script>
